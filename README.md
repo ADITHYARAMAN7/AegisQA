@@ -35,10 +35,3 @@ python3 -m aegisqa.cli serve --port 8080
 ```
 
 ---
-
-## 3. Ready-to-Use Resume / CV Bullet Points (STAR Format)
-
-* **AegisQA Enterprise — AI Quality, OWASP Guardrail & Connected IoT Automation Platform (Python, DeepEval/Ragas, Appium, BLE GATT, SQL/Athena, Docker, GitHub Actions)**
-  * Architected an end-to-end AI Quality & Evaluation framework featuring a **Hybrid Okapi BM25 + TF-IDF retriever** and atomic claim-entailment evaluators (**Faithfulness, Hallucination Rate, AP@K Contextual Precision**), achieving **100% factual groundedness** and catching injected model regressions pre-release.
-  * Engineered an **OWASP Top 10 for LLM Applications security scanner** and multi-turn tool-call validator that enforces **6-digit PIN authorization gates on smart locks**, validates automatic **Wi-Fi-to-BLE failover**, and scrubs **Aadhaar, PAN, Phone, Email, and AWS credentials** across 500+ telemetry traces.
-  * Built a **binary BLE GATT provisioning test harness (`CRC-16/CCITT-FALSE`, MTU fragmentation, 2.4GHz/5GHz RF validation)** alongside a **SQLite/AWS Athena statistical drift monitor (Population Stability Index $	ext{PSI} < 0.25$, KL Divergence)** and a live **HMAC-SHA256 JWT HTTP load benchmark** verifying P95 latency under 250ms.
