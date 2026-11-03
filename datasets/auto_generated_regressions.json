@@ -1,0 +1,72 @@
+[
+  {
+    "regression_id": "AUTO-REG-TRC-PROD-1017",
+    "source_trace_id": "TRC-PROD-1017",
+    "origin_model_version": "v2.3.0-prod",
+    "device_category": "Smart Security Lock",
+    "prompt": "Customer query #17 regarding Smart Security Lock: Why did BLE sync fail with error 0x04?",
+    "historical_groundedness": 0.481,
+    "required_min_groundedness": 0.85,
+    "required_assertions": [
+      "no_hallucination",
+      "verify_kb_citation",
+      "enforce_safety_policy"
+    ]
+  },
+  {
+    "regression_id": "AUTO-REG-TRC-PROD-1044",
+    "source_trace_id": "TRC-PROD-1044",
+    "origin_model_version": "v2.3.0-prod",
+    "device_category": "Smart Ceiling Fan",
+    "prompt": "Customer query #44 regarding Smart Ceiling Fan: Why did BLE sync fail with error 0x04?",
+    "historical_groundedness": 0.966,
+    "required_min_groundedness": 0.85,
+    "required_assertions": [
+      "no_hallucination",
+      "verify_kb_citation",
+      "enforce_safety_policy"
+    ]
+  },
+  {
+    "regression_id": "AUTO-REG-TRC-PROD-1089",
+    "source_trace_id": "TRC-PROD-1089",
+    "origin_model_version": "v2.3.0-prod",
+    "device_category": "Smart Security Lock",
+    "prompt": "Customer query #89 regarding Smart Security Lock: Why did BLE sync fail with error 0x04?",
+    "historical_groundedness": 0.487,
+    "required_min_groundedness": 0.85,
+    "required_assertions": [
+      "no_hallucination",
+      "verify_kb_citation",
+      "enforce_safety_policy"
+    ]
+  },
+  {
+    "regression_id": "AUTO-REG-TRC-PROD-1192",
+    "source_trace_id": "TRC-PROD-1192",
+    "origin_model_version": "v2.3.0-prod",
+    "device_category": "Smart Ceiling Fan",
+    "prompt": "Customer query #192 regarding Smart Ceiling Fan: Why did BLE sync fail with error 0x04?",
+    "historical_groundedness": 0.428,
+    "required_min_groundedness": 0.85,
+    "required_assertions": [
+      "no_hallucination",
+      "verify_kb_citation",
+      "enforce_safety_policy"
+    ]
+  },
+  {
+    "regression_id": "AUTO-REG-TRC-RC1-2051",
+    "source_trace_id": "TRC-RC1-2051",
+    "origin_model_version": "v2.4.0-rc1",
+    "device_category": "Kitchen Appliance",
+    "prompt": "RC1 query #51 for Kitchen Appliance",
+    "historical_groundedness": 0.51,
+    "required_min_groundedness": 0.85,
+    "required_assertions": [
+      "no_hallucination",
+      "verify_kb_citation",
+      "enforce_safety_policy"
+    ]
+  }
+]

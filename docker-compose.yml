@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  aegisqa-gateway:
+    build: .
+    command: python3 -m aegisqa.cli serve --port 8080
+    ports:
+      - "8080:8080"
+    environment:
+      - AEGIS_ENV=production
+
+  aegisqa-quality-gate:
+    build: .
+    command: python3 run_quality_gate.py
+    volumes:
+      - ./reports:/app/reports

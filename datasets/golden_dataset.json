@@ -1,0 +1,154 @@
+[
+  {
+    "id": "GOLD-RAG-01",
+    "category": "RAG_GROUNDEDNESS",
+    "query": "My AeroSense Pro fan won't connect to my 5GHz home Wi-Fi router. How do I pair it and what is its wattage at Speed 5?",
+    "expected_doc_id": "DOC-FAN-001",
+    "expected_facts": [
+      "2.4GHz",
+      "5GHz",
+      "28W",
+      "Timer",
+      "10 seconds",
+      "blue"
+    ],
+    "forbidden_claims": [
+      "supports 5GHz",
+      "50W",
+      "press Boost button to pair"
+    ],
+    "ground_truth": "The AeroSense Pro Smart Fan only supports 2.4GHz Wi-Fi (802.11 b/g/n) andBLE 5.0; 5GHz Wi-Fi is not supported. At Speed 5, it consumes 28W. To enter pairing mode, power cycle the fan and press the 'Timer' button on the remote within 10 seconds until the LED blinks blue thrice."
+  },
+  {
+    "id": "GOLD-RAG-02",
+    "category": "RAG_GROUNDEDNESS",
+    "query": "My SecurLock Pro smart lock batteries died completely while I am outside. Can I charge its built-in lithium battery or how do I get in?",
+    "expected_doc_id": "DOC-LOCK-002",
+    "expected_facts": [
+      "4x AA",
+      "Alkaline",
+      "USB-C",
+      "power bank",
+      "Mechanical Override Key"
+    ],
+    "forbidden_claims": [
+      "built-in lithium battery",
+      "solar charging"
+    ],
+    "ground_truth": "The SecurLock Pro Smart Lock uses 4x AA Alkaline batteries (not a built-in rechargeable lithium battery). To get in when drained, use one of the 2 Mechanical Override Keys or connect a 5V power bank to the exterior USB-C emergency jumpstart port to power the keypad temporarily."
+  },
+  {
+    "id": "GOLD-RAG-03",
+    "category": "RAG_GROUNDEDNESS",
+    "query": "My AquaPure water purifier shows Error E09 and stopped dispensing water. Can I still drink from the tap bypass?",
+    "expected_doc_id": "DOC-RO-003",
+    "expected_facts": [
+      "E09",
+      "UV lamp failure",
+      "solenoid valve",
+      "halts water dispensing",
+      "technician"
+    ],
+    "forbidden_claims": [
+      "safe to bypass",
+      "reset filter to clear E09"
+    ],
+    "ground_truth": "Error E09 indicates a UV lamp failure. For your safety, the solenoid valve automatically closes to halt water dispensing and prevent unsterilized water output. Do not bypass the UV sensor; schedule an authorized technician visit."
+  },
+  {
+    "id": "GOLD-RAG-04",
+    "category": "RAG_GROUNDEDNESS",
+    "query": "Why is the LED ring blinking red on my TorqueBlend MG1 Mixer Grinder and the motor won't start?",
+    "expected_doc_id": "DOC-MG-004",
+    "expected_facts": [
+      "jar detection",
+      "J01",
+      "thermal overload",
+      "T02",
+      "85C",
+      "15 minutes"
+    ],
+    "forbidden_claims": [
+      "Wi-Fi disconnected",
+      "blade dull sensor"
+    ],
+    "ground_truth": "A red blinking LED ring on the TorqueBlend MG1 Mixer Grinder indicates either the jar dome is not locked onto the magnetic reed sensor (Code J01) or motor thermal overload above 85C (Code T02). Ensure the jar is locked, or wait 15 minutes and press the bottom reset breaker."
+  },
+  {
+    "id": "GOLD-RAG-05",
+    "category": "HALLUCINATION_TRAP",
+    "query": "What is the suction power in Pascals of the OmniHome RoboVac X900 laser robot vacuum?",
+    "expected_doc_id": null,
+    "expected_facts": [
+      "do not have",
+      "not in our catalog",
+      "cannot verify"
+    ],
+    "forbidden_claims": [
+      "5000 Pa",
+      "4000 Pa",
+      "LiDAR navigation"
+    ],
+    "ground_truth": "OmniHome does not offer a 'RoboVac X900' in the supported product knowledge base. I can only assist with verified OmniHome products such as Smart Ceiling Fans, SecurLock Pro Smart Locks, AquaPure Water Purifiers, and TorqueBlend TorqueBlend MG1 Mixer Grinders."
+  },
+  {
+    "id": "GOLD-TOOL-01",
+    "category": "MULTI_TURN_TOOL_CALL",
+    "turns": [
+      {
+        "user": "Set my bedroom AeroSense fan (device_id: FAN-BED-01) to speed 4 and turn on Sleep Mode."
+      },
+      {
+        "user": "Actually, the Wi-Fi in the bedroom just went down. Switch it to speed 2 over BLE fallback."
+      }
+    ],
+    "expected_tools": [
+      {
+        "name": "set_fan_state",
+        "args": {
+          "device_id": "FAN-BED-01",
+          "speed": 4,
+          "sleep_mode": true,
+          "transport": "wifi"
+        }
+      },
+      {
+        "name": "set_fan_state",
+        "args": {
+          "device_id": "FAN-BED-01",
+          "speed": 2,
+          "sleep_mode": true,
+          "transport": "ble_fallback"
+        }
+      }
+    ]
+  },
+  {
+    "id": "GOLD-TOOL-02",
+    "category": "MULTI_TURN_TOOL_CALL",
+    "turns": [
+      {
+        "user": "My AquaPure purifier (RO-KITCHEN-09) is showing error E09. Check its live telemetry first."
+      },
+      {
+        "user": "Since UV failed, book a priority service ticket for tomorrow morning."
+      }
+    ],
+    "expected_tools": [
+      {
+        "name": "get_ro_telemetry",
+        "args": {
+          "device_id": "RO-KITCHEN-09"
+        }
+      },
+      {
+        "name": "create_service_ticket",
+        "args": {
+          "device_id": "RO-KITCHEN-09",
+          "error_code": "E09",
+          "priority": "HIGH"
+        }
+      }
+    ]
+  }
+]
